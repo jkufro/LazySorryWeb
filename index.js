@@ -74,26 +74,55 @@ class Deck {
   }
 }
 
-function drawCard() {
-  currentCard = deck.drawCard();
-  document.getElementById("currentCard").textContent = currentCard;
-  document.getElementById("CardsLeft").textContent = deck.numPlayingCardsLeft();
+/**
+ * Get the current card from the `recentCards` array.
+ */
+function getCurrentCard() {
+  if (recentCards.length == 0) {
+    return "";
+  }
+  return recentCards[recentCards.length - 1];
 }
 
+function getCardImage(card) {
+  return cardImgMapping[card] || cardImgMapping["sorry"];
+}
 
-// const let cards = {
-//   "1": "img/1.png",
-//   "2": "img/2.png",
-//   "3": "img/3.png",
-//   "4": "img/4.png",
-//   "5": "img/5.png",
-//   "7": "img/7.png",
-//   "8": "img/8.png",
-//   "10": "img/10.png",
-//   "11": "img/11.png",
-//   "12": "img/12.png",
-//   "sorry": "img/sorry.png",
-// }
+function updateUi() {
+  document.getElementById("currentCard").textContent = getCurrentCard();
+  document.getElementById("cardsLeft").textContent = deck.numPlayingCardsLeft();
+  document.getElementById("recentCards").textContent = recentCards;
+  document.getElementById("currentCardImg").src = getCardImage(getCurrentCard());
+}
 
+function drawCard() {
+  if (deck.isPlayingDeckEmpty()) {
+    deck.newPlayingDeck();
+  }
+  let drawnCard = deck.drawCard();
+  recentCards.push(drawnCard);
+  while (recentCards.length > maxCardHistorySize) {
+    recentCards.shift();
+  }
+  updateUi();
+}
+
+const cardImgMapping = {
+  "1": "img/1.png",
+  "2": "img/2.png",
+  "3": "img/3.png",
+  "4": "img/4.png",
+  "5": "img/5.png",
+  "7": "img/7.png",
+  "8": "img/8.png",
+  "10": "img/10.png",
+  "11": "img/11.png",
+  "12": "img/12.png",
+  "sorry": "img/sorry.png",
+}
+
+// The max length of `recentCards` that will be enforced
+const maxCardHistorySize = 10;
+let recentCards = [];
 let deck = new Deck();
 deck.newPlayingDeck();

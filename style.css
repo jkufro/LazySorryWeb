@@ -1,3 +1,44 @@
+body {
+  background: darkslategray;
+}
+
 #currentCardImg {
-  width: 90%;
+  position: fixed;
+  height: 70vh;
+  margin: 2vh auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.lastCard {
+  height: 22vh;
+  /*position: fixed;
+  top: 0;
+  margin: 2vh auto;*/
+}
+
+#prevCardContainer {
+  width: 50vh;
+  margin: auto;
+  height: 25vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+#lastCard1 {
+  right: 0;
+}
+
+#lastCard2 {
+
+}
+
+#lastCard3
+ /*left: 0;*/
 }

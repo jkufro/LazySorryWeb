@@ -10,10 +10,15 @@
   </head>
   <body>
     <main>
-        <button onclick="drawCard()">Draw Card</button>
-        <p><strong>Card: </strong><span id="currentCard"></span></p>
-        <p><strong>Cards Left: </strong><span id="cardsLeft"></span></p>
-        <p><strong>Recent Cards: </strong><span id="recentCards"></span></p>
+        <button class="hidden" onclick="drawCard()">Draw Card</button>
+        <p class="hidden"><strong>Card: </strong><span id="currentCard"></span></p>
+        <p class="hidden"><strong>Cards Left: </strong><span id="cardsLeft"></span></p>
+        <p class="hidden"><strong>Recent Cards: </strong><span id="recentCards"></span></p>
+        <div id="prevCardContainer">
+          <img src="img/sorry.png" id="lastCard3" class="lastCard"/>
+          <img src="img/sorry.png" id="lastCard2" class="lastCard"/>
+          <img src="img/sorry.png" id="lastCard1" class="lastCard"/>
+        </div>
         <img src="img/sorry.png" id="currentCardImg" onclick="drawCard()" />
     </main>
   <script src="index.js"></script>

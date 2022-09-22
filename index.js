@@ -186,11 +186,12 @@ const cardImgMapping = {
 
 
 function vh(percent) {
+  // https://stackoverflow.com/questions/44109314
   var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
   return (percent * h) / 100;
 }
-
 function vw(percent) {
+  // https://stackoverflow.com/questions/44109314
   var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   return (percent * w) / 100;
 }

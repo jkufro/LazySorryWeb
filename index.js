@@ -125,20 +125,23 @@ function drawCard() {
   updateUi();
 }
 
+
+const imgFolder = 'jpg-img';
+const imgExtension = 'jpeg';
 const cardImgMapping = {
-  "1": "img/1.png",
-  "2": "img/2.png",
-  "3": "img/3.png",
-  "4": "img/4.png",
-  "5": "img/5.png",
-  "7": "img/7.png",
-  "8": "img/8.png",
-  "10": "img/10.png",
-  "11": "img/11.png",
-  "12": "img/12.png",
-  "sorry": "img/sorry.png",
-  "back_of_card": "img/back_of_card.png"
-}
+  "1": `${imgFolder}/1.${imgExtension}`,
+  "2": `${imgFolder}/2.${imgExtension}`,
+  "3": `${imgFolder}/3.${imgExtension}`,
+  "4": `${imgFolder}/4.${imgExtension}`,
+  "5": `${imgFolder}/5.${imgExtension}`,
+  "7": `${imgFolder}/7.${imgExtension}`,
+  "8": `${imgFolder}/8.${imgExtension}`,
+  "10": `${imgFolder}/10.${imgExtension}`,
+  "11": `${imgFolder}/11.${imgExtension}`,
+  "12": `${imgFolder}/12.${imgExtension}`,
+  "sorry": `${imgFolder}/sorry.${imgExtension}`,
+  "back_of_card": `${imgFolder}/back_of_card.${imgExtension}`,
+};
 
 // The max length of `recentCards` that will be enforced
 const maxCardHistorySize = 5;

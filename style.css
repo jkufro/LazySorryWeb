@@ -9,7 +9,7 @@ img {
 
 
 .hidden {
-  display: none;
+  visibility: hidden;
 }
 
 .lastCard {
@@ -29,24 +29,21 @@ img {
   justify-content: space-evenly;
 }
 
-#currentCardContainer {
+#hiddenCardDrawButton {
+ opacity: 0;
+}
 
+.currentCardImg {
+  position: fixed;
+  left: 0;
+  margin: auto;
+  right: 0;
+  top: min(50vw, 30vh);
+  height: 60vh;
 }
 
 #currentCardImg {
-  /*position: fixed;
-  height: 70vh;
-  margin: 2vh auto;
-  left: 0;
-  right: 0;
-  bottom: 0;*/
-
-  /*position: fixed;
-  margin: 2vh auto;
-  max-width: 100%;*/
-
   position: fixed;
-  /*max-width: 90vw;*/
   left: 0;
   margin: auto;
   right: 0;

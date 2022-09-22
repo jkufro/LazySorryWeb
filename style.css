@@ -1,14 +1,6 @@
 body {
   background: darkslategray;
-}
-
-#currentCardImg {
-  position: fixed;
-  height: 70vh;
-  margin: 2vh auto;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  margin: 0;
 }
 
 
@@ -17,28 +9,76 @@ body {
 }
 
 .lastCard {
-  height: 22vh;
+  /*height: 22vh;*/
   /*position: fixed;
   top: 0;
   margin: 2vh auto;*/
+  max-height: 22vh;
+  max-width: 30vw;
 }
 
 #prevCardContainer {
   width: 50vh;
   margin: auto;
-  height: 25vh;
+  /* height: 25vh; */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+#currentCardContainer {
+
+}
+
+#currentCardImg {
+  /*position: fixed;
+  height: 70vh;
+  margin: 2vh auto;
+  left: 0;
+  right: 0;
+  bottom: 0;*/
+
+  /*position: fixed;
+  margin: 2vh auto;
+  max-width: 100%;*/
+
+  position: fixed;
+  /*max-width: 90vw;*/
+  left: 0;
+  margin: auto;
+  right: 0;
+  top: min(50vw, 30vh);
+  height: 60vh;
 }
 
 #lastCard1 {
+  /*position: fixed;
+  right: 4vw;
+  top: 2vh;*/
+  position: fixed;
+  left: min(65vw, 34vh);
   right: 0;
+  margin: auto;
+  top: 2vh;
 }
 
 #lastCard2 {
-
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 2vh;
+  /*max-width: 28vw;
+  max-height: 25vh;*/
 }
 
-#lastCard3
- /*left: 0;*/
+#lastCard3 {
+  /*position: fixed;
+  left: 4vw;
+  top: 2vh;*/
+
+  position: fixed;
+  left: 0;
+  right: min(65vw, 34vh);
+  margin: auto;
+  top: 2vh;
 }

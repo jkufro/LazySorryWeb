@@ -34,7 +34,7 @@ class Deck {
    */
   drawCard() {
     if (this.isPlayingDeckEmpty()) {
-      return "";
+      return "back_of_card";
     }
     return this._playingDeck.shift();
   }
@@ -78,14 +78,29 @@ class Deck {
  * Get the current card from the `recentCards` array.
  */
 function getCurrentCard() {
-  if (recentCards.length == 0) {
-    return "";
+  return getRecentCard(0);
+  // if (recentCards.length == 0) {
+  //   return "";
+  // }
+  // return recentCards[recentCards.length - 1];
+}
+
+/**
+ * Get a previous card from the `recentCards` array.
+ *
+ * 0 is considered the current card, 1 the last card, 2 the card before that,
+ * and so on.
+ */
+function getRecentCard(negativeIndex) {
+  if (recentCards.length < (negativeIndex + 1)) {
+    return "back_of_card";
   }
-  return recentCards[recentCards.length - 1];
+  return recentCards[recentCards.length - 1 - negativeIndex];
 }
 
 function getCardImage(card) {
-  return cardImgMapping[card] || cardImgMapping["sorry"];
+  console.log("getCardImage -> " + cardImgMapping[card]);
+  return cardImgMapping[card] || cardImgMapping["back_of_card"];
 }
 
 function updateUi() {
@@ -93,6 +108,9 @@ function updateUi() {
   document.getElementById("cardsLeft").textContent = deck.numPlayingCardsLeft();
   document.getElementById("recentCards").textContent = recentCards;
   document.getElementById("currentCardImg").src = getCardImage(getCurrentCard());
+  document.getElementById("lastCard1").src = getCardImage(getRecentCard(1));
+  document.getElementById("lastCard2").src = getCardImage(getRecentCard(2));
+  document.getElementById("lastCard3").src = getCardImage(getRecentCard(3));
 }
 
 function drawCard() {
@@ -119,10 +137,11 @@ const cardImgMapping = {
   "11": "img/11.png",
   "12": "img/12.png",
   "sorry": "img/sorry.png",
+  "back_of_card": "img/back_of_card.png"
 }
 
 // The max length of `recentCards` that will be enforced
-const maxCardHistorySize = 10;
+const maxCardHistorySize = 5;
 let recentCards = [];
 let deck = new Deck();
 deck.newPlayingDeck();

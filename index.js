@@ -224,7 +224,7 @@ const lastCard1Properties = {
   top: '2vh',
   height: 'unset',
   'max-height': '22vh',
-  'max-width': '30vw',
+  'max-width': '27vw',
 };
 
 const lastCard2Properties = {
@@ -235,7 +235,7 @@ const lastCard2Properties = {
   top: '2vh',
   height: 'unset',
   'max-height': '22vh',
-  'max-width': '30vw',
+  'max-width': '27vw',
 };
 
 const lastCard3Properties = {
@@ -246,7 +246,7 @@ const lastCard3Properties = {
   top: '2vh',
   height: 'unset',
   'max-height': '22vh',
-  'max-width': '30vw',
+  'max-width': '27vw',
 };
 
 function propertiesToStyleString(props) {

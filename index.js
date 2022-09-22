@@ -223,7 +223,7 @@ const lastCard1Properties = {
   margin: 'auto',
   top: '2vh',
   height: 'unset',
-  'max-height': '22vh',
+  'max-height': '21vh',
   'max-width': '30vw',
 };
 
@@ -234,7 +234,7 @@ const lastCard2Properties = {
   margin: 'auto',
   top: '2vh',
   height: 'unset',
-  'max-height': '22vh',
+  'max-height': '21vh',
   'max-width': '30vw',
 };
 
@@ -245,7 +245,7 @@ const lastCard3Properties = {
   margin: 'auto',
   top: '2vh',
   height: 'unset',
-  'max-height': '22vh',
+  'max-height': '21vh',
   'max-width': '30vw',
 };
 

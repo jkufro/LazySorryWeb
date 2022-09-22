@@ -52,9 +52,6 @@ img {
 }
 
 #lastCard1 {
-  /*position: fixed;
-  right: 4vw;
-  top: 2vh;*/
   position: fixed;
   left: min(65vw, 34vh);
   right: 0;
@@ -68,15 +65,9 @@ img {
   right: 0;
   margin: auto;
   top: 2vh;
-  /*max-width: 28vw;
-  max-height: 25vh;*/
 }
 
 #lastCard3 {
-  /*position: fixed;
-  left: 4vw;
-  top: 2vh;*/
-
   position: fixed;
   left: 0;
   right: min(65vw, 34vh);

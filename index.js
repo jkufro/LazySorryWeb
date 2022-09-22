@@ -144,10 +144,47 @@ const cardImgMapping = {
   "back_of_card": `${imgFolder}/back_of_card.${imgExtension}`,
 };
 
+const currentCardProperties = {
+  position: 'fixed',
+  left: '0',
+  right: '0',
+  margin: 'auto',
+  top: 'min(50vw, 30vh)',
+  height: '60vh',
+};
+
+lastCard1Properties = {
+  position: 'fixed',
+  left: 'min(65vw, 34vh)',
+  right: '0',
+  margin: 'auto',
+  top: '2vh',
+  height: undefined,
+};
+
+lastCard2Properties = {
+  position: 'fixed',
+  left: '0',
+  right: '0',
+  margin: 'auto',
+  top: '2vh',
+  height: undefined,
+};
+
+lastCard3Properties = {
+  position: 'fixed',
+  left: '0',
+  right: 'min(65vw, 34vh)',
+  margin: 'auto',
+  top: '2vh',
+  height: undefined,
+};
+
 // The max length of `recentCards` that will be enforced
 const maxCardHistorySize = 5;
 const cardDrawDelayMillis = 1000;
 let lastCardDrawMillis = Date.now();
 let recentCards = [];
+let recentCardElements = [];
 let deck = new Deck();
 deck.newPlayingDeck();

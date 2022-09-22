@@ -95,7 +95,6 @@ function getRecentCard(negativeIndex) {
 }
 
 function getCardImage(card) {
-  console.log("getCardImage -> " + cardImgMapping[card]);
   return cardImgMapping[card] || cardImgMapping["back_of_card"];
 }
 
@@ -119,12 +118,53 @@ function drawCard() {
     deck.newPlayingDeck();
   }
   let drawnCard = deck.drawCard();
-  recentCards.push(drawnCard);
-  while (recentCards.length > maxCardHistorySize) {
-    recentCards.shift();
+  let drawnCardElement = createCardElement(drawnCard, offScreenCardProperties);
+  recentCardElements.push(drawnCardElement);
+  document.body.appendChild(drawnCardElement);
+  $(drawnCardElement).animate(currentCardProperties, 500, "swing");
+
+  // Fade out old card elements
+  while (recentCardElements.length > maxCardHistorySize) {
+    $(recentCardElements[0]).fadeOut(500, function() {
+      $(recentCardElements[0]).remove();
+    });
+    recentCardElements.shift();
   }
 
-  updateUi();
+  // Animate movement of existing card elements
+  newLastCard1 = recentCardElements[recentCardElements.length - 2];
+  $(newLastCard1).animate(lastCard1Properties, 500, "swing");
+
+  newLastCard2 = recentCardElements[recentCardElements.length - 3];
+  $(newLastCard2).animate(lastCard2Properties, 500, "swing");
+
+  newLastCard3 = recentCardElements[recentCardElements.length - 4];
+  $(newLastCard3).animate(lastCard3Properties, 500, "swing");
+}
+
+function createCardElement(card, props) {
+  let newCard = document.createElement("img");
+  newCard.setAttribute('style', propertiesToStyleString(props));
+  newCard.setAttribute('src', getCardImage(card));
+  return newCard;
+}
+
+function initialize() {
+  let lastCard3 = createCardElement("", lastCard3Properties);
+  recentCardElements.push(lastCard3);
+  document.body.appendChild(lastCard3);
+
+  let lastCard2 = createCardElement("", lastCard2Properties);
+  recentCardElements.push(lastCard2);
+  document.body.appendChild(lastCard2);
+
+  let lastCard1 = createCardElement("", lastCard1Properties);
+  recentCardElements.push(lastCard1);
+  document.body.appendChild(lastCard1);
+
+  let currentCard = createCardElement("", currentCardProperties);
+  recentCardElements.push(currentCard);
+  document.body.appendChild(currentCard);
 }
 
 const imgFolder = 'jpg-img';
@@ -144,41 +184,77 @@ const cardImgMapping = {
   "back_of_card": `${imgFolder}/back_of_card.${imgExtension}`,
 };
 
+
+function vh(percent) {
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  return (percent * h) / 100;
+}
+
+function vw(percent) {
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  return (percent * w) / 100;
+}
+const offScreenCardProperties = {
+  position: 'fixed',
+  left: '0',
+  right: '0',
+  margin: 'auto',
+  top: '400vh',
+  height: '60vh',
+  'max-height': '100vh',
+  'max-width': '100vw',
+}
 const currentCardProperties = {
   position: 'fixed',
   left: '0',
   right: '0',
   margin: 'auto',
-  top: 'min(50vw, 30vh)',
+  top: Math.min(vw(50), vh(30)) + 'px',
   height: '60vh',
+  'max-height': '100vh',
+  'max-width': '100vw',
 };
 
-lastCard1Properties = {
+const lastCard1Properties = {
   position: 'fixed',
-  left: 'min(65vw, 34vh)',
+  left: Math.min(vw(65), vh(34)) + 'px',
   right: '0',
   margin: 'auto',
   top: '2vh',
-  height: undefined,
+  height: 'unset',
+  'max-height': '22vh',
+  'max-width': '30vw',
 };
 
-lastCard2Properties = {
+const lastCard2Properties = {
   position: 'fixed',
   left: '0',
   right: '0',
   margin: 'auto',
   top: '2vh',
-  height: undefined,
+  height: 'unset',
+  'max-height': '22vh',
+  'max-width': '30vw',
 };
 
-lastCard3Properties = {
+const lastCard3Properties = {
   position: 'fixed',
   left: '0',
-  right: 'min(65vw, 34vh)',
+  right: Math.min(vw(65), vh(34)) + 'px',
   margin: 'auto',
   top: '2vh',
-  height: undefined,
+  height: 'unset',
+  'max-height': '22vh',
+  'max-width': '30vw',
 };
+
+function propertiesToStyleString(props) {
+  let result = '';
+  for (const [key, value] of Object.entries(props)) {
+    result += `${key}: ${value}; `
+  }
+  return result;
+}
 
 // The max length of `recentCards` that will be enforced
 const maxCardHistorySize = 5;
@@ -188,3 +264,4 @@ let recentCards = [];
 let recentCardElements = [];
 let deck = new Deck();
 deck.newPlayingDeck();
+initialize();

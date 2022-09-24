@@ -98,16 +98,6 @@ function getCardImage(card) {
   return cardImgMapping[card] || cardImgMapping["back_of_card"];
 }
 
-function updateUi() {
-  // document.getElementById("currentCard").textContent = getCurrentCard();
-  // document.getElementById("cardsLeft").textContent = deck.numPlayingCardsLeft();
-  // document.getElementById("recentCards").textContent = recentCards;
-  document.getElementById("currentCardImg").src = getCardImage(getCurrentCard());
-  document.getElementById("lastCard1").src = getCardImage(getRecentCard(1));
-  document.getElementById("lastCard2").src = getCardImage(getRecentCard(2));
-  document.getElementById("lastCard3").src = getCardImage(getRecentCard(3));
-}
-
 function drawCard() {
   if ((Date.now() - lastCardDrawMillis) < cardDrawDelayMillis) {
     return;

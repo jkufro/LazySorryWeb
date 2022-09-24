@@ -1,0 +1,24 @@
+body {
+  background: darkslategray;
+  margin: 0;
+}
+
+img {
+  border-radius: 8%;
+  box-shadow: 3px 3px 14px 1px;
+}
+
+#hiddenCardDrawButton {
+ opacity: 0;
+ z-index: 9999;
+}
+
+.currentCardImg {
+  position: fixed;
+  left: 0;
+  margin: auto;
+  right: 0;
+  top: min(50vw, 30vh);
+  height: 60vh;
+}
+

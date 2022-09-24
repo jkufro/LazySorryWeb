@@ -249,7 +249,7 @@ function propertiesToStyleString(props) {
 
 // The max length of `recentCards` that will be enforced
 const maxCardHistorySize = 5;
-const cardDrawDelayMillis = 1000;
+const cardDrawDelayMillis = 500;
 let lastCardDrawMillis = Date.now();
 let recentCards = [];
 let recentCardElements = [];
